@@ -20,10 +20,13 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                .csrf().disable()
                 .authorizeRequests()
                     .anyRequest().permitAll()
                 .and()
                 .formLogin()
+                    .loginPage("/user/login")
+                    .loginProcessingUrl("/login")
                     .defaultSuccessUrl("/")
                     .permitAll();
     }
