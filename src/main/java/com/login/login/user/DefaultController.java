@@ -17,18 +17,18 @@ public class DefaultController {
         return "index";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/user/login")
     public String loginForm(){
         return "login";
     }
 
-    @GetMapping("/join")
+    @GetMapping("/user/join")
     public String joinForm(Model model){
         model.addAttribute("form", new DBUserRequestAddDto());
         return "join";
     }
 
-    @PostMapping("/join")
+    @PostMapping("/user/join")
     public String join(@ModelAttribute DBUserRequestAddDto requestAddDto){
         Long savedId = userService.save(requestAddDto);
 
